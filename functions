@@ -5,3 +5,19 @@ function addTodos(todo) {  //this parameters "todo" is a new variable and this
 
 addTodos("some stuff"); //this calls the functions and sets the "todo" variable is equal to "some stuff"
                         //we can use functions with in functions
+************************************************************************************************************************************
+change Todo:
+function changeTodo(number, newValue) {
+  todos[number] = newValue;
+  displayTodos();
+}
+changeTodo(0, "item5");
+*************************************************************************************
+Deleting a todo:
+
+function deleteTodo(position) {
+  todos.splice(position, 1);
+  displayTodos();
+
+}
+deleteTodo(0,1);
