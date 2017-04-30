@@ -1,0 +1,157 @@
+// Code goes here
+
+// client-side js
+// run by the browser each time your view template is loaded
+
+// by default, you've got jQuery,
+// add other scripts at the bottom of index.html
+
+
+var todoList = {
+     todos: [],
+     displayTodos: function() {
+      if(this.todos.length === 0) {
+        console.log("Your todo list is empty!");
+      } else {
+       console.log("My Todos:");
+       for(var i = 0; i<this.todos.length; i++) {
+        if(this.todos[i].completed === true) {
+           console.log("(x)", this.todos[i].todoText);
+
+     } else {
+           console.log("( )",this.todos[i].todoText);
+     }
+       }   
+      }
+   },
+     addTodos: function(todoText) {
+        this.todos.push({
+            todoText: todoText,
+            completed: false   
+   
+    });
+        this.displayTodos();
+  },
+     changeTodos: function(position, todoText) {
+       
+       this.todos[position].todoText = todoText;
+       this.displayTodos();
+
+  },
+     deleteTodos: function(position) {
+       
+       this.todos.splice(position,1);
+       this.displayTodos();
+  },
+     toggleComplete: function(position) {
+        var todo = this.todos[position];
+         todo.completed = !todo.completed; 
+         this.displayTodos();
+  },
+    
+     toggleAll: function() {
+       
+             var totalTodos = this.todos.length;
+             var completedTodos = 0;
+
+   //getting the number of completed todos
+      for(var i = 0; i<totalTodos; i++) {
+         if(this.todos[i].completed === true) {
+           completedTodos++;
+      }
+     }
+ //if everything is true, make everything false
+         if(completedTodos === totalTodos) {
+            for(var i = 0; i<totalTodos; i++) {
+             this.todos[i].completed = false;
+     }
+    } else {
+           for(var i = 0; i<totalTodos; i++) {
+          this.todos[i].completed = true;
+    }
+   }
+      this.displayTodos();
+  }
+};
+/*
+//we want to get access to display todos button
+var displayTodosButton = document.getElementById('displayTodosButton');
+var toggleAllButton = document.getElementById('toggleAll');
+//we want to run displayTodos method when some one click the display button
+displayTodosButton.addEventListener('click',function() {
+  todoList.displayTodos();
+  
+});
+
+toggleAllButton.addEventListener('click', function() {
+  todoList.toggleAll();
+  
+}); */
+
+
+var handlers = {
+  displayTodos: function() {
+    todoList.displayTodos();
+  },
+  toggleAll: function() {
+    todoList.toggleAll();
+  },
+  addTodos: function() {
+    var addTodoTextInput = document.getElementById("addTodoTextInput");
+    todoList.addTodos(addTodoTextInput.value);
+    addTodoTextInput.value = '';
+  },
+  changeTodos: function() {
+    var changeTodoPositionInput = document.getElementById("changeTodoPositionTodo");
+    var changeTodoTextInput = document.getElementById("changeTodoTextInput");
+    todoList.changeTodos(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value );
+    changeTodoPositionInput.valueAsNumber = '';
+    changeTodoTextInput.value = '';
+    
+    
+  },
+  deleteTodos: function() {
+    var deleteTodoPositionInput = document.getElementById("deleteTodoPositionInput");
+    todoList.deleteTodos(deleteTodoPositionInput.valueAsNumber);
+    deleteTodoPositionInput.value = '';
+  },
+  toggleComplete: function() {
+    var toggleCompletePositionInput = document.getElementById("toggleCompletePositionInput");
+    todoList.toggleComplete(toggleCompletePositionInput.valueAsNumber);
+    toggleCompletePositionInput.value = '';
+  }
+};
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
