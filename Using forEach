@@ -1,0 +1,23 @@
+toggleAll: function() {
+    debugger;
+    var totalTodos = this.todos.length;
+    var completedTodos = 0;
+    
+    // Get number of completed todos.
+
+    this.todos.forEach(function(todo1) {
+     if (todo1.completed === true) {
+        completedTodos++;
+     }
+    });
+    
+    
+    this.todos.forEach(function(todo1) {
+      // Case 1: If everything’s true, make everything false.
+      if(completedTodos === totalTodos) {
+        todo1.completed = false;
+      // Case 2: Otherwise, make everything true.
+      } else {
+        todo1.completed = true;
+      }
+    });    
